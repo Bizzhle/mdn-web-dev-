@@ -1,0 +1,167 @@
+/* General setup */
+@font-face {
+  font-family: "Noto Serif";
+  src: url("fonts/NotoSerif.woff2") format("woff2"),
+    url("fonts/NotoSerif.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.woff2") format("woff2"),
+    url("fonts/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  min-width: 1000px;
+  max-width: 1400px;
+}
+
+/* Layout */
+
+section {
+  float: left;
+  width: 50%;
+}
+
+aside {
+  float: left;
+  width: 30%;
+}
+
+nav {
+  float: left;
+  width: 20%;
+}
+
+footer {
+  clear: both;
+}
+
+header,
+section,
+aside,
+nav,
+footer {
+  padding: 20px;
+}
+
+/* header and footer */
+
+header,
+footer {
+  border-top: 5px solid #a66;
+  border-bottom: 5px solid #a66;
+}
+
+/* WRITE YOUR CODE BELOW HERE */
+html {
+  font-size: 10px;
+}
+
+body {
+  font: 1.5em "Noto Serif", serif;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  word-spacing: 1.5px;
+}
+h1,
+h2 {
+  font: "Roboto", sans-serif;
+}
+
+header h1 {
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+section h2 + p {
+  text-indent: 20px;
+}
+a {
+  outline: none;
+  text-decoration: none;
+}
+a:link {
+  color: #265301;
+}
+
+a:visited {
+  color: #a66;
+}
+a:focus {
+  border-bottom: 1px solid;
+  background: #bae498;
+}
+a:hover {
+  background-color: lightcoral;
+  color: black;
+  border-bottom: 1px solid;
+}
+
+a:active {
+  background: #265301;
+  color: #cdfeaa;
+}
+
+ul li {
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+}
+/* my style  check below for mdn's 
+p a::after {
+  display: inline;
+  content: url(external-link-52.png);
+  zoom: 30%;
+}
+*/
+a[href*="http"] {
+  background: url(external-link-52.png) no-repeat 100% 0;
+  background-size: 16px 16px;
+  padding-right: 19px;
+}
+
+/* Style links as buttons */
+nav ul {
+  padding: 0;
+  width: 100%;
+}
+
+nav li {
+  display: block;
+}
+
+nav a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  line-height: 3;
+  border: 1px solid #a66;
+  margin-bottom: 2%;
+}
+nav li:last-child a {
+  margin-bottom: 0;
+}
+nav a:link,
+nav a:visited,
+nav a:focus {
+  background: antiquewhite;
+}
+
+nav a:hover {
+  background: orange;
+}
+
+nav a:active {
+  background: red;
+  color: white;
+}

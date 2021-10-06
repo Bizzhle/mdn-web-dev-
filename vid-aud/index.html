@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Basiv video embed</h1>
+    <figure>
+      <video controls autoplay preload="auto">
+        <source src="videos/sintel-short.mp4" type="video/mp4" />
+        <source src="videos/sintel-short.webm" type="video/webm" />
+        <track
+          label="English"
+          kind="subtitles"
+          src="subtitles/sintel-en.vtt"
+          srclang="en"
+          default
+        />
+      </video>
+      <figcaption>Cartoon girl and warrior</figcaption>
+    </figure>
+    <figure>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/mU6anWqZJcc"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </figure>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5137230.549632608!2d10.475811676172908!3d51.045454939141464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47af938f50e7a3b7%3A0x3ce98f981b7028c9!2sEasy%20groceries%20-Indian%20online%20groceries%20shop%20in%20germany!5e0!3m2!1sen!2sde!4v1588518330600!5m2!1sen!2sde"
+      width="600"
+      height="450"
+      frameborder="0"
+      style="border: 0;"
+      allowfullscreen=""
+      aria-hidden="false"
+      tabindex="0"
+    ></iframe>
+  </body>
+</html>

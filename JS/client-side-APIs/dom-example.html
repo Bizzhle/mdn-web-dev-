@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple DOM example</title>
+    <style>
+      .highlight {
+        color: white;
+        background-color: black;
+        padding: 10px;
+        width: 250px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img
+        src="dinosaur.png"
+        alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth."
+      />
+      <p>
+        Here we will add a link to the
+        <a href="https://www.mozilla.org/">Mozilla homepage</a>
+      </p>
+    </section>
+    <script>
+      //select an element andd store a reference to it in a variable
+      const link = document.querySelector("a");
+
+      // Update/change text content of an element
+      link.textContent = "Mozilla Developer Network";
+      //Update/change url of an element
+      link.href = "https://developer.mozilla.org";
+
+      const sect = document.querySelector("section");
+
+      //create new paragraph in section
+      const para = document.createElement("p");
+      para.textContent = "We hope you enjoyed the ride.";
+
+      // Appens the new paragraph at the end of the section
+      sect.appendChild(para);
+
+      // add a text node to the paragraph the link sits inside
+      const text = document.createTextNode(
+        "— the premier source for web development knowledge."
+      );
+      //select reference to the paragraph
+      const linkPara = document.querySelector("p");
+      // append the text node - this goes to the end of the paragraph
+      linkPara.appendChild(text);
+
+      // You could clone link para by doing something like this and inserting the new para instead
+      // var newPara = linkPara.cloneNode(true);
+
+      // moves the paragraph to the bottom of the section
+      sect.appendChild(linkPara);
+      /*
+      // removes a node.
+      sect.removeChild(para);
+
+      // Remove a node based only on reference to self
+      linkPara.remove();
+      */
+
+      // Adding css styles to html using the dom object - first style
+      /*
+      para.style.color = "white";
+      para.style.backgroundColor = "black";
+      para.style.padding = "10px";
+      para.style.width = "250px";
+      para.style.textAlign = "center";
+      */
+
+      // second style - add the style to <head> in html
+      // para is giving a class name and the style is applied to this class
+      para.setAttribute("class", "highlight");
+      linkPara.setAttribute("class", "highlight");
+    </script>
+  </body>
+</html>

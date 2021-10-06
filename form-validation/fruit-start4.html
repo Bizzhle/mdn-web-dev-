@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js validate without constraint api</title>
+    <link rel="stylesheet" href="start4.css" />
+  </head>
+  <body>
+    <form>
+      <p>
+        <label for="mail">
+          <span>Please enter an email address:</span>
+          <input type="text" class="mail" id="mail" name="mail" />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <!-- Some legacy browsers need to have the `type` attribute
+             explicitly set to `submit` on the `button`element -->
+      <button type="submit">Submit</button>
+    </form>
+    <script src="start4.js"></script>
+  </body>
+</html>

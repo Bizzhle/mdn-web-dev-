@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person greeter</title>
+    <style>
+      form {
+        width: 300px;
+      }
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Give someone a greeting!</h1>
+    <form>
+      <div>
+        <label for="name">Enter a name:</label>
+        <input type="name" id="name" required />
+      </div>
+      <div>
+        <button class="greet">Greet!</button>
+      </div>
+    </form>
+    <p><button class="cancel">Cancel greeting</button></p>
+    <script>
+      // Store references to our form, input element and buttons
+      const form = document.querySelector("form");
+      const nameInput = document.getElementById("name");
+
+      const greetBtn = document.querySelector(".greet");
+      const cancelBtn = document.querySelector(".cancel");
+
+      // Disable cancel button for now so it does nothing if a
+      // greeting is not already in progress.
+      cancelBtn.disabled = true;
+
+      // Define greetinng function
+
+      function sayHi(who) {
+        alert("Hello " + who + "!");
+        //Disable cancel button once greeting has been shown
+        cancelBtn.disabled = true;
+      }
+
+      // Create global variable that will act as setTimeout reference
+      let myGreeting;
+
+      // Add eventListeener to our form to start the greeting
+      form.addEventListener("submit", (e) => {
+        //prevent form submission
+        e.preventDefault();
+        //enable the cancell button
+        cancelBtn.disabled = false;
+        // Set the timeout to greet the name entered in input
+        myGreeting = setTimeout(sayHi, 5000, nameInput.value);
+      });
+
+      // Add event listener to the cancel button to cancel the greeting
+      cancelBtn.addEventListener("click", () => {
+        clearTimeout(myGreeting);
+        alert("greeting CANCELLED!");
+        //Disable cancel button
+        cancelBtn.disabled = true;
+      });
+    </script>
+  </body>
+</html>

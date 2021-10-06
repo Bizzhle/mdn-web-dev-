@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple async example</title>
+  </head>
+  <body>
+    <script>
+      console.log("Started");
+
+      let image;
+
+      /*fetch("coffee.jpg")
+        .then((response) => {
+          console.log("It worked!");
+          return response.blob();
+        })
+        .then((myBlob) => {
+          let objectUrl = URL.createObjectURL(myBlob);
+          image = document.createElement("img");
+          image.src = objectUrl;
+          document.body.appendChild(image);
+        })
+        .then((response) => {
+          console.log("All done");
+        })
+        .catch((error) => {
+          console.log("Image not available for download " + error.message);
+        });*/
+
+      // async/await version
+      async function myFetch() {
+        let response = await fetch("coffee.jpg");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          let myBlob = await response.blob();
+        }
+      }
+
+      myFetch()
+        .then((blob) => {
+          let objectUrl = URL.createObjectURL(myBlob);
+          image = document.createElement("img");
+          image.src = objectUrl;
+          document.body.appendChild(image);
+        })
+        .catch((e) => {
+          console.log(
+            "There has been a problem with your fetch operation: " + e.message
+          );
+        });
+
+      // async/wait with try..catch structure
+      /*
+      async function myFetch() {
+        try {
+          let response = await fetch("coffee.jpg");
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          } else {
+            let myBlob = await response.blob();
+            let objectURL = URL.createObjectURL(myBlob);
+            let image = document.createElement("img");
+            image.src = objectURL;
+            document.body.appendChild(image);
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+
+      myFetch(); 
+      */
+    </script>
+  </body>
+</html>

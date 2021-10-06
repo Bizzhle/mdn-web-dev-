@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment test page</title>
+    <link rel="stylesheet" href="payment-form.css" />
+  </head>
+  <body>
+    <p>You pay here</p>
+
+    <form action="">
+      <h1>payment Form</h1>
+      <p>
+        Required fields are followed by
+        <strong><abbr title="required">*</abbr></strong
+        >.
+      </p>
+      <section>
+        <h2>Contact information</h2>
+        <fieldset>
+          <legend>Title</legend>
+          <ul>
+            <li>
+              <label for="title_1">
+                <input type="radio" id="title_1" name="title" value="K" />
+                King
+              </label>
+            </li>
+            <li>
+              <label for="title_2">
+                <input type="radio" id="title_2" name="title" value="Q" />
+                Queen
+              </label>
+            </li>
+            <li>
+              <label for="title_3">
+                <input type="radio" id="title_3" name="title" value="J" />
+                Joker
+              </label>
+            </li>
+          </ul>
+        </fieldset>
+        <p>
+          <label for="name">
+            <span>Name: </span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <input type="text" id="name" name="username" />
+        </p>
+        <p>
+          <label for="mail">
+            <span>Email: </span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <input type="email" id="mail" name="usermail" />
+        </p>
+        <p>
+          <label for="pwd">
+            <span>Password: </span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <input type="password" id="pwd" name="password" />
+        </p>
+      </section>
+      <section>
+        <h2>Payment information</h2>
+        <p>
+          <label for="card">
+            <span>Card type: </span>
+          </label>
+          <select name="usercard" id="card">
+            <option value="visa">Visa</option>
+            <option value="mc">Mastercard</option>
+            <option value="amex">American Express</option>
+          </select>
+        </p>
+        <p>
+          <label for="number">
+            <span>Card number: </span>
+            <strong><abbr title="required">*</abbr></strong>
+          </label>
+          <input type="tel" id="number" name="cardnumber" />
+        </p>
+        <p>
+          <label for="date">
+            <span>Expiration date: </span>
+            <strong><abbr title="required">*</abbr></strong>
+            <em>formatted as mm/dd/yyyy</em>
+          </label>
+          <input type="date" id="date" name="expiration" />
+        </p>
+      </section>
+      <p>
+        <button type="submit">Validate the payment</button>
+        <input type="button" value="This is an anonymous button" />
+      </p>
+      <!--<input
+        type="image"
+        alt="Click me!"
+        src="Emilia1.JPG"
+        width="80"
+        height="30"
+      /> -->
+      <!-- file picker-->
+      <input type="file" name="file" id="file" accept="image/*" multiple />
+      <br />
+      <!--Search -->
+      <input type="search" id="search" name="search" />
+      <br />
+      <!--SElect box, options can be nested in optgroup -->
+      <select id="groups" name="groups">
+        <optgroup label="fruits">
+          <option>Banana</option>
+          <option selected>Cherry</option>
+          <option>Lemon</option>
+        </optgroup>
+        <optgroup label="vegetables">
+          <option>Carrot</option>
+          <option>Eggplant</option>
+          <option>Potato</option>
+        </optgroup>
+      </select>
+      <br />
+      <!-- Auto complete box-->
+      <label for="myFruit">What's your favorite fruit?</label>
+      <input type="text" name="myFruit" id="myFruit" list="mySuggestion" />
+      <datalist id="mySuggestion">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Blackberry</option>
+        <option>Blueberry</option>
+        <option>Lemon</option>
+        <option>Lychee</option>
+        <option>Peach</option>
+        <option>Pear</option>
+      </datalist>
+    </form>
+  </body>
+</html>

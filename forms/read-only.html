@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read only</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="readonly.css" />
+  </head>
+  <body>
+    <form action="">
+      <fieldset id="shipping">
+        <legend>Shipping Address</legend>
+        <div>
+          <label for="name1">Name:</label>
+          <input id="name1" type="text" name="name1" required />
+        </div>
+        <div>
+          <label for="address1">Address: </label>
+          <input id="address1" name="address1" type="text" required />
+        </div>
+        <div>
+          <label for="address1">Address:</label>
+          <input type="text" id="address1" name="address1" required />
+        </div>
+      </fieldset>
+      <fieldset id="billing">
+        <legend>Billing address</legend>
+        <div>
+          <label for="billing-checkbox">Same as shipping address:</label>
+          <input type="checkbox" id="billing-checkbox" checked />
+        </div>
+        <div>
+          <label for="name" class="billing label disabled-label">Name:</label>
+          <input type="text" id="name" name="name" disabled required />
+        </div>
+        <div>
+          <label for="address2" class="billing-label disabled-label"
+            >Address:
+          </label>
+          <input id="address2" name="address2" type="text" disabled required />
+        </div>
+        <div>
+          <label for="pcode2" class="billing-label disabled-label"
+            >Zip/postal code:
+          </label>
+          <input id="pcode2" name="pcode2" type="text" disabled required />
+        </div>
+      </fieldset>
+      <!--Read-only and Read-write-->
+      <fieldset>
+        <legend>Check shipping details</legend>
+        <div>
+          <label for="name">Name: </label>
+          <input id="name" name="name" type="text" value="Mr Soft" readonly />
+        </div>
+        <div>
+          <label for="address">Address:</label>
+          <textarea id="address" name="address" readonly>
+                23 Elastic Way, Viscous, Bright Ridge, CA, USA
+                </textarea
+          >
+        </div>
+        <div>
+          <label for="pcode">Zip/postal code: </label>
+          <input id="pcode" name="pcode" type="text" value="94708" readonly />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Final instructions</legend>
+        <div>
+          <label for="sms-confirm">Send confirmation by SMS?</label>
+          <input id="sms-confirm" name="sms-confirm" type="checkbox" />
+        </div>
+        <div>
+          <label for="instructions">Any special instructions?</label>
+          <textarea id="instructions" name="instructions"></textarea>
+        </div>
+      </fieldset>
+      <div><button type="button">Amend details</button></div>
+      <div><button>Submit</button></div>
+    </form>
+
+    <script>
+      // Wait for the page to finish loading
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          // Attach `change` event listener to checkbox
+          document
+            .getElementById("billing-checkbox")
+            .addEventListener("change", toggleBilling);
+        },
+        false
+      );
+
+      function toggleBilling() {
+        // Select the billing text fields
+        let billingItems = document.querySelectorAll(
+          '#billing input[type="text"]'
+        );
+        // Select the billing text labels
+        let billingLabels = document.querySelectorAll(".billing-label");
+
+        // Toggle the billing text fields and labels
+        for (let i = 0; i < billingItems.length; i++) {
+          billingItems[i].disabled = !billingItems[i].disabled;
+
+          if (
+            billingLabels[i].getAttribute("class") ===
+            "billing-label disabled-label"
+          ) {
+            billingLabels[i].setAttribute("class", "billing-label");
+          } else {
+            billingLabels[i].setAttribute(
+              "class",
+              "billing-label disabled-label"
+            );
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

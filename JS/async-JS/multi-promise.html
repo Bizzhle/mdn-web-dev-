@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple promise</title>
+  </head>
+  <body>
+    <p>This is my Page</p>
+    <script>
+      /*let a = fetch(url1);
+      let b = fetch(url2);
+      let c = fetch(url3);
+
+      Promise.all([a, b, c]).then((values) => {});*/
+      /* 
+      function fetchAndDecode(url, type) {
+        //First of all, we define the function, passing it a URL and a string representing the type of resource it is fetching.
+        return (
+          fetch(url)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              } else {
+                if (type === "blob") {
+                  return response.blob();
+                } else if (type === "text") {
+                  return response.text();
+                }
+              }
+            })
+            .catch((e) => {
+              console.log(
+                `There has been a problem with your fetch operation for resource "${url}": ` +
+                  e.message
+              );
+            })
+            //  If any of the promises reject, the .catch() block will let you know which one had a problem.
+            // The .all() block (see below) will still fulfill, but it won't display the resources that had problems.
+            // If you wanted the .all() to reject, you'd have to chain the .catch() block on to the end of the .all() instead.
+
+            .finally(() => {
+              console.log(`fetch attempt for "${url}" finished.`);
+            })
+        );
+        // used to run a final block code after a promise completes.
+        // This logs a simple message to the console to tell us when each fetch attempt has finished
+      }
+
+      let coffee = fetchAndDecode("coffee.jpg", "blob");
+      let tea = fetchAndDecode("tea.jpg", "blob");
+      let description = fetchAndDecode("description.txt", "text");
+
+      Promise.all([coffee, tea, description]).then((values) => {
+        console.log(values);
+        let objectURL1 = URL.createObjectURL(values[0]);
+        let objectURL2 = URL.createObjectURL(values[1]);
+        let descText = values[2];
+
+        // Display the images in <img> elements
+        let image1 = document.createElement("img");
+        let image2 = document.createElement("img");
+        image1.src = objectURL1;
+        image2.src = objectURL2;
+        document.body.appendChild(image1);
+        document.body.appendChild(image2);
+
+        //Display the text in a paragraph
+        let para = document.createElement("p");
+        para.textContent = descText;
+        document.body.appendChild(para);
+      }); */
+
+      // async/await for  above promise example
+      async function fetchAndDecode(url, type) {
+        let response = await fetch(url);
+
+        let content;
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          if (type === "blob") {
+            content = await response.blob();
+          } else if (type === "text") {
+            content = await response.text();
+          }
+
+          return content;
+        }
+      }
+
+      async function displayContent() {
+        let coffee = fetchAndDecode("coffee.jpg", "blob");
+        let tea = fetchAndDecode("tea.jpg", "blob");
+        let description = fetchAndDecode("description.txt", "text");
+
+        let values = await Promise.all([coffee, tea, description]);
+
+        let objectURL1 = URL.createObjectURL(values[0]);
+        let objectURL2 = URL.createObjectURL(values[1]);
+        let descText = values[2];
+
+        let image1 = document.createElement("img");
+        let image2 = document.createElement("img");
+        image1.src = objectURL1;
+        image2.src = objectURL2;
+        document.body.appendChild(image1);
+        document.body.appendChild(image2);
+
+        let para = document.createElement("p");
+        para.textContent = descText;
+        document.body.appendChild(para);
+      }
+
+      displayContent()
+        .catch((e) => console.log(e))
+        .finally(console.log("FInished"));
+      /*For error handling, we've included a .catch() 
+      block on our displayContent() call; this will handle
+       errors ocurring in both functions. */
+    </script>
+  </body>
+</html>

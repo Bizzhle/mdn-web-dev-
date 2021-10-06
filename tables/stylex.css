@@ -1,0 +1,60 @@
+table {
+  table-layout: fixed;
+
+  border-collapse: collapse;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+  text-align: left;
+}
+thead th:nth-child(2) {
+  width: 20%;
+  text-align: right;
+}
+thead th:nth-child(3) {
+  width: 15%;
+  text-align: right;
+}
+thead th:nth-child(4) {
+  width: 35%;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 20px;
+}
+
+tbody th {
+  text-align: left;
+}
+
+tbody th + td {
+  text-align: right;
+}
+tbody th + td + td {
+  text-align: right;
+}
+th {
+  letter-spacing: 2px;
+}
+td {
+  letter-spacing: 1px;
+}
+
+html {
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+}
+
+table {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+tfoot {
+  border-top: 1px solid black;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: lightblue;
+}

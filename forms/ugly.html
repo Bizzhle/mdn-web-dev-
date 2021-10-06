@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ugly.css" />
+  </head>
+  <body>
+    <form action="">
+        <fieldset>
+            <legend> Feedback form</legend>
+
+            <p>Required fields are labelled with "required".</p>
+            
+        <p>
+            <label for="select"><span>Select box:</span></label>
+            <div class="select-wrapper"><select name="select-box" id="fruit">
+            <option value="banana">Banana</option>
+            <option value="cherry">Cherry</option>
+             <option value="lemon">Lemon</option>
+            </select></div>
+      </p>
+      <p>
+        <label for="favFruit"><span>"Fav fruit?" datalist:</span></label>
+        <input type="text" name="myFruit" id="favFruit" list="sugestions" />
+        <datalist id="sugestions">
+          <option>Apple</option>
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Orange</option>
+        </datalist>
+      </p>
+
+      <div>
+        <label for="fname">First name: </label>
+        <input id="fname" name="fname" type="text" required>
+        <span></span>
+      </div>
+      <div>
+        <label for="lname">Last name: </label>
+        <input id="lname" name="lname" type="text" required>
+        <span></span>
+      </div>
+      <div>
+        <label for="age">Age (must be 12+): </label>
+        <input id="age" name="age" type="number" min="12" max="120" required>
+        <span></span>
+      </div>
+      <div>
+        <label for="email">Email address (include if you want a response): </label>
+        <input id="email" name="email" type="email">
+      </div>
+      <div><button>Submit</button></div>
+      
+        </fieldset>
+    </form>
+  </body>
+</html>

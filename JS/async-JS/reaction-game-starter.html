@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.player reaction game</title>
+    <link rel="stylesheet" href="reaction-game.css" />
+  </head>
+  <body>
+    <div class="spinner">
+      <div><p>↻</p></div>
+    </div>
+
+    <section class="ui">
+      <div class="topbar">
+        <p class="p1">Player 1: "A"</p>
+        <p class="p2">Player 2: "L"</p>
+        <div class="middlebar">
+          <button>Start game</button>
+          <p class="result"></p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const spinner = document.querySelector(".spinner p");
+      const spinnerContainer = document.querySelector(".spinner");
+      let rotateCount = 0;
+      let startTime = null;
+      let rAF;
+      const btn = document.querySelector("button");
+      const result = document.querySelector(".result");
+
+      function random(min, max) {
+        var num = Math.floor(Math.random() * (max - min)) + min;
+        return num;
+      }
+
+      function draw(timestamp) {
+        if (!startTime) {
+          startTime = timestamp;
+        }
+
+        rotateCount = (timestamp - startTime) / 3;
+
+        if (rotateCount > 359) {
+          rotateCount %= 360;
+        }
+
+        spinner.style.transform = "rotate(" + rotateCount + "deg)";
+        rAF = requestAnimationFrame(draw);
+      }
+      result.style.display = "none";
+      spinnerContainer.style.display = "none";
+
+      function reset() {
+        btn.style.display = "block";
+        result.textContent = "";
+        result.style.display = "none";
+      }
+
+      btn.addEventListener("click", start);
+      function start() {
+        draw();
+        spinnerContainer.style.display = "block";
+        btn.style.display = "none";
+        setTimeout(setEndgame, random(5000, 10000));
+      }
+      function setEndgame() {
+        cancelAnimationFrame(rAF);
+        spinnerContainer.style.display = "none";
+        result.style.display = "block";
+        result.textContent = "Players GO!!";
+
+        document.addEventListener("keydown", keyHandler);
+
+        function keyHandler(e) {
+          let isOVer = false;
+          console.log(e.key);
+
+          if (e.key === "a") {
+            result.textContent = "Player 1 has won!!";
+            isOver = true;
+          } else if (e.key === "l") {
+            result.textContent = "Player 2 won!!";
+            isOver = true;
+          }
+
+          if (isOver) {
+            document.removeEventListener("keydown", keyHandler);
+            setTimeout(reset, 5000);
+          }
+        }
+      }
+      // draw();
+    </script>
+  </body>
+</html>

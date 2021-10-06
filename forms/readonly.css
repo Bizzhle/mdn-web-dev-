@@ -1,0 +1,149 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+  margin: 20px auto;
+  max-width: 460px;
+}
+fieldset {
+  padding: 10px 30px 0;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  font-size: 1rem;
+  top: 6px;
+  right: 10px;
+  position: absolute;
+}
+
+button,
+label,
+input,
+select {
+  display: block;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  height: 30px;
+}
+label {
+  width: 40%;
+}
+
+input[type="text"],
+select {
+  box-shadow: inset 1px 1px 3px #ccc;
+  border-radius: 5px;
+}
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
+  background-color: #eee;
+}
+
+input:optional {
+  border: 1px solid silver;
+}
+
+button {
+  width: 60%;
+  margin: 10px auto;
+}
+
+legend {
+  color: white;
+  background: black;
+  padding: 5px 10px;
+}
+fieldset > div {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+input + span {
+  position: relative;
+}
+input + span::after {
+  font-size: 0.7rem;
+  position: absolute;
+  padding: 5px 10px;
+  top: -26px;
+}
+input:required + span::after {
+  font-size: 0.7rem;
+  position: absolute;
+  content: "required";
+  color: #ccc;
+  background-color: black;
+  padding: 5px 10px;
+  top: -26px;
+  left: -70px;
+}
+input:out-of-range + span::after {
+  color: #ccc;
+  background-color: red;
+  width: 155px;
+  content: "Outside allowable value range";
+  left: -182px;
+}
+
+input + span::before {
+  position: absolute;
+  right: -20px;
+  top: 5px;
+}
+input:invalid {
+  border: 2px solid red;
+}
+input:invalid + span::before {
+  content: "✖";
+  color: red;
+}
+
+input:valid + span::before {
+  content: "✓";
+  color: green;
+}
+
+.disabled-label {
+  color: #aaa;
+}
+textarea {
+  box-shadow: inset 1px 1px 3px #ccc;
+  border-radius: 5px;
+  width: 50%;
+}
+
+textarea {
+  height: 100px;
+}
+
+input:-moz-read-only,
+textarea:-moz-read-only {
+  border: 0;
+  box-shadow: none;
+  resize: none;
+  background-color: white;
+}
+
+input:read-only,
+textarea:read-only {
+  border: 0;
+  box-shadow: none;
+  resize: none;
+  background-color: white;
+}

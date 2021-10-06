@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapquest example</title>
+    <style>
+      #map {
+        width: 600px;
+        height: 600px;
+      }
+    </style>
+    <!-- connect to api functionality through this-->
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"
+    />
+    <script>
+      //third party api using a js library.
+      //basic part of the example
+
+      var L;
+
+      window.onload = function () {
+        L.mapquest.key = "2IZ9UEdwyoVmOrseKHb7MBSEs134tXCv";
+
+        // 'map' referes to a <div> element with the ID map
+        /* create variable to store map info and then create a new map usnig mapquest.map() 
+        method, which takes as its parameters the ID of a <div> element you want to display
+           the map in ('map'), and an options object containing the details of the particular map we want to display */
+        var map = L.mapquest.map("map", {
+          center: [53.480759, -2.242631],
+          // 1. change 'map' to 'hybrid', try other type of map
+          layers: L.mapquest.tileLayer("dark"),
+          zoom: 12,
+        });
+
+        // add control
+        map.addControl(L.mapquest.control({ position: "bottomright" }));
+
+        // add icon
+        L.marker([53.480759, -2.242631], {
+          icon: L.mapquest.icons.marker({
+            primaryColor: "#22407F",
+            secondaryColor: "#3B5998",
+            shadow: true,
+            size: "md",
+            symbol: "A",
+          }),
+        })
+          .bindPopup("This is Manchester!")
+          .addTo(map);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Simple Mapquest example</h1>
+
+    <script
+      async
+      src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"
+    ></script>
+
+    <div id="map"></div>
+  </body>
+</html>

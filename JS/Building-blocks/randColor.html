@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Color</title>
+    <style>
+      button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>change color</button>
+  </body>
+  <script>
+    const btn = document.querySelector("button");
+
+    function random(number) {
+      return Math.floor(Math.random() * (number + 1));
+    }
+    /* event handler
+    btn.onmouseout = function () {
+      const rndcol =
+        "rgb(" + random(255) + "," + random(255) + "," + random(255) + ")";
+      document.body.style.background = rndcol;
+    };
+    */
+
+    // addEventListener with event object(e)
+    function bgChange(e) {
+      const rndCol =
+        "rgb(" + random(255) + "," + random(255) + "," + random(255) + ")";
+      document.body.style.backgroundColor = rndCol;
+      // e.target.style.backgroundColor = rndColor;
+      console.log(e);
+    }
+
+    btn.addEventListener("click", bgChange);
+  </script>
+</html>

@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: beige;
+  font-family: "Open Sans", sans-serif;
+
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 600px;
+  margin: 10px auto;
+}
+
+.main {
+  padding: 30px 40px;
+}
+
+.header {
+  padding: 5px;
+  border: 1px solid black;
+  background-color: chartreuse;
+}
+
+h1 {
+  text-align: center;
+}
+
+.input-area {
+  margin: 20px auto 20px auto;
+}
+.input-area input {
+  border: 2px solid #000;
+  border-radius: 4px;
+  display: inline-block;
+  width: 78%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.addButton {
+  cursor: pointer;
+  border: 2px solid #000;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 10px;
+  font-size: 14px;
+  width: 20%;
+  margin-left: 5px;
+  background-color: #3498db;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.item {
+  padding: 5px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #000;
+}
+.item input {
+  border: none;
+  background: none;
+  outline: none;
+
+  width: 70%;
+  font-size: 16px;
+}
+
+.editButton {
+  cursor: pointer;
+
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  margin: 0 0.5rem;
+  background-color: lime;
+  display: inline-block;
+}
+.editButton:hover {
+  border: 1px solid #000;
+}
+.removeButton {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+
+  margin-left: 4px;
+  float: right;
+  background-color: #e00;
+}
+
+.removeButton:hover {
+  border: 1px solid #000;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax starting point</title>
+    <style>
+      html,
+      pre {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #ccc;
+      }
+
+      pre {
+        line-height: 1.5;
+        letter-spacing: 0.05rem;
+        padding: 1rem;
+        background-color: white;
+      }
+
+      label {
+        width: 200px;
+        margin-right: 33px;
+      }
+
+      select {
+        width: 350px;
+        padding: 5px;
+      }
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>Ajax starting point</h1>
+
+    <form>
+      <label for="verse-choose">Choose a verse</label>
+      <select id="verse-choose" name="verse-choose">
+        <option>Verse 1</option>
+        <option>Verse 2</option>
+        <option>Verse 3</option>
+        <option>Verse 4</option>
+      </select>
+    </form>
+
+    <h2>The Conqueror Worm, <em>Edgar Allen Poe, 1843</em></h2>
+
+    <pre></pre>
+
+    <script>
+      const verseChoose = document.querySelector("select");
+      const poemDisplay = document.querySelector("pre");
+
+      /*defines an onchange event handler function so that when the select's value is 
+      changed, its value is passed to an invoked function updateDisplay() as a parameter.*/
+      verseChoose.onchange = function () {
+        const verse = verseChoose.value;
+        updateDisplay(verse);
+      };
+
+      function updateDisplay(verse) {
+        /*To convert "Verse 1" to "verse1.txt" we need to convert the 
+          V to lower case, remove the space, and add .txt on the end*/
+        verse = verse.replace(" ", "");
+        verse = verse.toLowerCase();
+        let url = verse + ".txt";
+
+        // XHR allows us to make network requests to retrieve resources from a server via JavaScript
+        let request = new XMLHttpRequest();
+
+        // method to specify what HTTP request method to use to request the resource from the network, and what its URL is
+        /*Fetching a resource from the network is an asynchronous operation,
+         meaning that you have to wait for that operation to complete */
+        request.open("GET", url);
+        request.responseType = "text";
+
+        /* onload event handler — this is run when the load event fires 
+        (when the response has returned). When this has occurred, the response
+         data will be available in the response property of the XHR request object.*/
+        request.onload = function () {
+          poemDisplay.textContent = request.response;
+        };
+
+        //it won't actually run until we tell it to, which is done using the send() method.
+        request.send();
+
+        updateDisplay("Verse 1");
+        verseChoose.value = "Verse 1";
+
+        //  XHR requests must be run through a server. In cmd add python -m http.server
+      }
+    </script>
+  </body>
+</html>

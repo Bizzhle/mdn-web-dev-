@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS validate with constraint api</title>
+    <link rel="stylesheet" href="start3.css" />
+  </head>
+  <body>
+    <!--Detailed example on using js for form validation-->
+    <!--novalidate is used to turn off browsers automatic validation-->
+    <form novalidate>
+      <p>
+        <label for="mail">
+          <span>Please enter your email:</span>
+          <input type="email" id="mail" name="mail" required minlength="8" />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="start3.js"></script>
+  </body>
+</html>

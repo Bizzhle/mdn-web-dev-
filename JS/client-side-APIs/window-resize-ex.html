@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window resize example</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      div {
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        background-image: url(bgtile.png);
+        border: 10px solid white;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      /*making sure your application is as big as the window it is viewed in, 
+      whatever size it is. This is often useful in situations like games, where 
+      you want to use as much of the screen area as possible to play the game in*/
+
+      const div = document.querySelector("div");
+      //innerWindow is where document is displayed
+      // grab the height and width of viewport
+      let winWidth = window.innerWidth;
+      let winHeight = window.innerHeight;
+
+      // dynamically alter the width and height of the div to equal that of the viewport
+      div.style.width = winWidth + "px";
+      div.style.height = winHeight + "px";
+
+      // Use event to resize the window everytime the window is resized
+      window.onresize = function () {
+        winWidth = window.innerWidth;
+        winHeight = window.innerHeight;
+        div.style.width = winWidth + "px";
+        div.style.height = winHeight + "px";
+      };
+    </script>
+  </body>
+</html>
